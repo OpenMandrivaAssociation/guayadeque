@@ -6,7 +6,6 @@ Group:          Sound
 License:        GPLv2+
 URL:            http://www.sourceforge.net/projects/guayadeque/
 Source0:        http://www.sourceforge.net/projects/guayadeque/%{name}-%{version}.tar.bz2
-Patch0:         guayadeque-0.3.1-mga-fix-string-literal.patch
 BuildRequires:  cmake 
 BuildRequires:  wxgtku-devel >= 2.8.10
 BuildRequires:  sqlite3-devel
@@ -46,7 +45,6 @@ Some of Guayadeque Features
 
 %prep
 %setup -q
-#%patch0 -p0 -b .fix-string-literal
 
 %build
 #remove build script conflicting with build/ folder used by cmake
