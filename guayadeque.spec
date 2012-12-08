@@ -69,3 +69,11 @@ desktop-file-install --vendor="" \
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+
+
+%changelog
+* Wed Feb 08 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.3.5-1
++ Revision: 771773
+- unneeded patch removed
+- imported package guayadeque
+
