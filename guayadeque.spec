@@ -1,28 +1,30 @@
-Summary:        Music Player with the aims to be intuitive, easy to use and fast
-Name:           guayadeque
-Version:        0.3.5
-Release:        1
-Group:          Sound
-License:        GPLv2+
-URL:            http://www.sourceforge.net/projects/guayadeque/
-Source0:        http://www.sourceforge.net/projects/guayadeque/%{name}-%{version}.tar.bz2
-BuildRequires:  cmake 
-BuildRequires:  wxgtku-devel >= 2.8.10
-BuildRequires:  sqlite3-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  taglib-devel 
-BuildRequires:  curl-devel 
-BuildRequires:  libmp4v2-devel
-BuildRequires:  libflac-devel
-BuildRequires:  dbus-devel
-BuildRequires:  libgstreamer-devel
-BuildRequires:  imagemagick
-BuildRequires:  libgpod-devel
-BuildRequires:	desktop-file-utils
-Requires:       gstreamer0.10-plugins-base
-Requires:       gstreamer0.10-plugins-good
-Requires:       gstreamer0.10-plugins-ugly
+%define	gstapi	0.10
 
+Summary:	Music Player with the aims to be intuitive, easy to use and fast
+Name:		guayadeque
+Version:	0.3.5
+Release:	1
+Group:		Sound
+License:	GPLv2+
+Url:		http://www.sourceforge.net/projects/guayadeque/
+Source0:	http://www.sourceforge.net/projects/guayadeque/%{name}-%{version}.tar.bz2
+
+BuildRequires:	cmake 
+BuildRequires:	desktop-file-utils
+BuildRequires:	imagemagick
+BuildRequires:	libmp4v2-devel
+BuildRequires:	wxgtku-devel >= 2.8.10
+BuildRequires:	pkgconfig(dbus-1)
+BuildRequires:	pkgconfig(flac)
+BuildRequires:	pkgconfig(gstreamer-%{gstapi})
+BuildRequires:	pkgconfig(libcurl)
+BuildRequires:	pkgconfig(libgpod-1.0)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(sqlite3)
+BuildRequires:	pkgconfig(taglib)
+Requires:	gstreamer%{gstapi}-plugins-base
+Requires:	gstreamer%{gstapi}-plugins-good
+Requires:	gstreamer%{gstapi}-plugins-ugly
 
 %description
 Guayadeque is a music management program designed for all music enthusiasts.
@@ -42,7 +44,6 @@ Some of Guayadeque Features
 - Allow fast access to any music file by genre, artist, album, etc
 - Play and Record shoutcast radios
 
-
 %prep
 %setup -q
 
@@ -55,13 +56,14 @@ rm -f ./build
 %install
 %makeinstall_std -C build
 
-desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --remove-key="Encoding" \
-  --dir %buildroot%{_datadir}/applications %buildroot%{_datadir}/applications/%{name}.desktop
+desktop-file-install \
+	--vendor="" \
+	--remove-category="Application" \
+	--remove-key="Encoding" \
+	--dir %{buildroot}%{_datadir}/applications \
+	%{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %find_lang %{name}
-
 
 %files -f %{name}.lang
 %doc README changelog LICENSE
@@ -69,11 +71,4 @@ desktop-file-install --vendor="" \
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-
-
-%changelog
-* Wed Feb 08 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.3.5-1
-+ Revision: 771773
-- unneeded patch removed
-- imported package guayadeque
 
