@@ -2,8 +2,8 @@
 
 Summary:	Music Player with the aims to be intuitive, easy to use and fast
 Name:		guayadeque
-Version:	0.3.5
-Release:	7
+Version:	0.3.7
+Release:	1
 Group:		Sound
 License:	GPLv2+
 Url:		http://www.sourceforge.net/projects/guayadeque/
@@ -13,7 +13,7 @@ BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
 BuildRequires:	libmp4v2-devel
-BuildRequires:	wxgtku-devel >= 2.8.10
+BuildRequires:	wxgtku-devel
 BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi})
