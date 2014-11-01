@@ -3,11 +3,12 @@
 Summary:	Music Player with the aims to be intuitive, easy to use and fast
 Name:		guayadeque
 Version:	0.3.7
-Release:	1
+Release:	2
 Group:		Sound
 License:	GPLv2+
 Url:		http://www.sourceforge.net/projects/guayadeque/
 Source0:	http://www.sourceforge.net/projects/guayadeque/%{name}-%{version}.tar.bz2
+Patch1:		guayadeque-0.3.7-clang.patch
 
 BuildRequires:	cmake 
 BuildRequires:	desktop-file-utils
@@ -46,6 +47,7 @@ Some of Guayadeque Features
 
 %prep
 %setup -q
+%apply_patches
 
 # deleting Unity parts in guayadeque.desktop files
 sed -i '18,38d' guayadeque.desktop

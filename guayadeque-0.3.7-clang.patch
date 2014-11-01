@@ -1,0 +1,11 @@
+--- guayadeque-0.3.7/src/Utils.cpp.orig	2014-11-01 21:11:23.895494962 +0000
++++ guayadeque-0.3.7/src/Utils.cpp	2014-11-01 21:11:33.066494286 +0000
+@@ -314,7 +314,7 @@
+ 	unsigned char CurChar;
+ 
+ 	wxCharBuffer CharBuffer = url.ToUTF8();
+-	int Index;
++	size_t Index;
+ 	int Count = strlen( CharBuffer );
+ 
+ 	for( Index = 0; Index < Count; ++Index )
