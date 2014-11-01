@@ -47,6 +47,9 @@ Some of Guayadeque Features
 %prep
 %setup -q
 
+# deleting Unity parts in guayadeque.desktop files
+sed -i '18,38d' guayadeque.desktop
+
 %build
 #remove build script conflicting with build/ folder used by cmake
 rm -f ./build
