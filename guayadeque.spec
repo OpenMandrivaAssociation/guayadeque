@@ -1,20 +1,22 @@
-%define	gstapi	0.10
+%define _disable_lto 1
+
+%define	gstapi	1.0
 
 Summary:	Music Player with the aims to be intuitive, easy to use and fast
 Name:		guayadeque
-Version:	0.3.7
-Release:	3
+Version:	0.4.5
+Release:	1
 Group:		Sound
 License:	GPLv2+
-Url:		http://www.sourceforge.net/projects/guayadeque/
-Source0:	http://www.sourceforge.net/projects/guayadeque/%{name}-%{version}.tar.bz2
-Patch1:		guayadeque-0.3.7-clang.patch
+Url:		http://www.guayadeque.org
+Source0:	http://github.com/anonbeat/guayadeque/release/%{name}-%{version}.tar.gz
+#Patch1:		guayadeque-0.3.7-clang.patch
 
 BuildRequires:	cmake 
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
 BuildRequires:	libmp4v2-devel
-BuildRequires:	wxgtku-devel
+BuildRequires:	wxgtku3.0-devel
 BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi})
@@ -50,7 +52,7 @@ Some of Guayadeque Features
 %apply_patches
 
 # deleting Unity parts in guayadeque.desktop files
-sed -i '18,38d' guayadeque.desktop
+sed -i '18,38d' defconfig/guayadeque.desktop
 
 %build
 #remove build script conflicting with build/ folder used by cmake
@@ -76,4 +78,5 @@ desktop-file-install \
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+%{_datadir}/appdata/guayadeque.appdata.xml
 
