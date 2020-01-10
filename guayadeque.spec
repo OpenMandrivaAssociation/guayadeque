@@ -50,7 +50,7 @@ Some of Guayadeque Features
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 # deleting Unity parts in guayadeque.desktop files
 sed -i '18,38d' defconfig/guayadeque.desktop
