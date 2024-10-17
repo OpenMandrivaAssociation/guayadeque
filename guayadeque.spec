@@ -8,7 +8,7 @@ Version:	0.4.5
 Release:	1
 Group:		Sound
 License:	GPLv2+
-Url:		http://www.guayadeque.org
+Url:		https://www.guayadeque.org
 Source0:	http://github.com/anonbeat/guayadeque/release/%{name}-%{version}.tar.gz
 #Patch1:		guayadeque-0.3.7-clang.patch
 
