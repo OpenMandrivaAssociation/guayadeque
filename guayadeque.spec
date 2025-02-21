@@ -4,19 +4,19 @@
 
 Summary:	Music Player with the aims to be intuitive, easy to use and fast
 Name:		guayadeque
-Version:	0.4.5
+Version:	0.6.5
 Release:	1
 Group:		Sound
 License:	GPLv2+
 Url:		https://www.guayadeque.org
-Source0:	http://github.com/anonbeat/guayadeque/release/%{name}-%{version}.tar.gz
-#Patch1:		guayadeque-0.3.7-clang.patch
+#Source0:	http://github.com/anonbeat/guayadeque/release/%{name}-%{version}.tar.gz
+Source0:	https://github.com/thothix/guayadeque/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	cmake 
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
-BuildRequires:	libmp4v2-devel
-BuildRequires:	wxgtku3.0-devel
+BuildRequires:	pkgconfig(mp4v2)
+BuildRequires:	wxgtku3.2-devel
 BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi})
@@ -49,20 +49,14 @@ Some of Guayadeque Features
 - Play and Record shoutcast radios
 
 %prep
-%setup -q
-%autopatch -p1
-
-# deleting Unity parts in guayadeque.desktop files
-sed -i '18,38d' defconfig/guayadeque.desktop
+%autosetup -p1
 
 %build
-#remove build script conflicting with build/ folder used by cmake
-rm -f ./build
 %cmake
-%make
+%make_build
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
 desktop-file-install \
 	--vendor="" \
