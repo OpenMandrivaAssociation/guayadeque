@@ -20,6 +20,7 @@ BuildRequires:	wxgtku3.2-devel
 BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi})
+BuildRequires:	pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	pkgconfig(libxml-2.0)
