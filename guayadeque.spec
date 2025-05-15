@@ -51,6 +51,9 @@ Some of Guayadeque Features
 %prep
 %autosetup -p1
 
+# Remove due conflicting with system build.
+rm -f ./build*
+
 %build
 %cmake
 %make_build
