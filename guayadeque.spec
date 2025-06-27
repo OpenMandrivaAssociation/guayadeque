@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(sqlite3)
+BuildRequires:	pkgconfig(wxsqlite3)
 BuildRequires:	pkgconfig(taglib)
 #BuildRequires:	pkgconfig(wxsqlite3)
 Requires:	gstreamer%{gstapi}-plugins-base
