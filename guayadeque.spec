@@ -28,7 +28,7 @@ BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(wxsqlite3)
 BuildRequires:	pkgconfig(taglib)
-#BuildRequires:	pkgconfig(wxsqlite3)
+BuildRequires:	pkgconfig(jsoncpp)
 Requires:	gstreamer%{gstapi}-plugins-base
 Requires:	gstreamer%{gstapi}-plugins-good
 Requires:	gstreamer%{gstapi}-plugins-ugly
