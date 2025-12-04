@@ -76,8 +76,8 @@ rm -f ./build*
 %files -f %{name}.lang
 %doc README changelog LICENSE
 %{_bindir}/%{name}
-%{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.png
-%{_datadir}/appdata/guayadeque.appdata.xml
+#{_datadir}/%{name}
+#{_datadir}/applications/%{name}.desktop
+#{_datadir}/pixmaps/%{name}.png
+#{_datadir}/appdata/guayadeque.appdata.xml
 
