@@ -4,28 +4,31 @@
 
 Summary:	Music Player with the aims to be intuitive, easy to use and fast
 Name:		guayadeque
-Version:	0.4.5
+Version:	0.7.4
 Release:	1
 Group:		Sound
 License:	GPLv2+
 Url:		https://www.guayadeque.org
-Source0:	http://github.com/anonbeat/guayadeque/release/%{name}-%{version}.tar.gz
-#Patch1:		guayadeque-0.3.7-clang.patch
+#Source0:	http://github.com/anonbeat/guayadeque/release/%{name}-%{version}.tar.gz
+Source0:	https://github.com/thothix/guayadeque/archive/v%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:	cmake 
+BuildRequires:	cmake
+BuildRequires:	gettext
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
-BuildRequires:	libmp4v2-devel
-BuildRequires:	wxgtku3.0-devel
+BuildRequires:	pkgconfig(mp4v2)
+BuildRequires:	wxgtku3.2-devel
 BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gstreamer-%{gstapi})
+BuildRequires:	pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(sqlite3)
-BuildRequires:	pkgconfig(taglib)
 BuildRequires:	pkgconfig(wxsqlite3)
+BuildRequires:	pkgconfig(taglib)
+BuildRequires:	pkgconfig(jsoncpp)
 Requires:	gstreamer%{gstapi}-plugins-base
 Requires:	gstreamer%{gstapi}-plugins-good
 Requires:	gstreamer%{gstapi}-plugins-ugly
@@ -49,35 +52,31 @@ Some of Guayadeque Features
 - Play and Record shoutcast radios
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
-# deleting Unity parts in guayadeque.desktop files
-sed -i '18,38d' defconfig/guayadeque.desktop
+# Remove due conflicting with system build.
+rm -f ./build*
 
 %build
-#remove build script conflicting with build/ folder used by cmake
-rm -f ./build
 %cmake
-%make
+%make_build
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
-desktop-file-install \
-	--vendor="" \
-	--remove-category="Application" \
-	--remove-key="Encoding" \
-	--dir %{buildroot}%{_datadir}/applications \
-	%{buildroot}%{_datadir}/applications/%{name}.desktop
+#desktop-file-install \
+#	--vendor="" \
+#	--remove-category="Application" \
+#	--remove-key="Encoding" \
+#	--dir %{buildroot}%{_datadir}/applications \
+#	%{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc README changelog LICENSE
+%doc README LICENSE
 %{_bindir}/%{name}
-%{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.png
-%{_datadir}/appdata/guayadeque.appdata.xml
-
+%{_datadir}/applications/org.guayadeque.guayadeque.desktop
+%{_datadir}/guayadeque/
+%{_datadir}/metainfo/org.guayadeque.guayadeque.metainfo.xml
+%{_iconsdir}/hicolor/*x*/apps/guayadeque.png
