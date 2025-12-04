@@ -64,12 +64,12 @@ rm -f ./build*
 %install
 %make_install -C build
 
-desktop-file-install \
-	--vendor="" \
-	--remove-category="Application" \
-	--remove-key="Encoding" \
-	--dir %{buildroot}%{_datadir}/applications \
-	%{buildroot}%{_datadir}/applications/%{name}.desktop
+#desktop-file-install \
+#	--vendor="" \
+#	--remove-category="Application" \
+#	--remove-key="Encoding" \
+#	--dir %{buildroot}%{_datadir}/applications \
+#	%{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %find_lang %{name}
 
