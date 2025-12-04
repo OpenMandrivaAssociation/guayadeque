@@ -74,7 +74,7 @@ rm -f ./build*
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc README changelog LICENSE
+%doc README LICENSE
 %{_bindir}/%{name}
 #{_datadir}/%{name}
 #{_datadir}/applications/%{name}.desktop
