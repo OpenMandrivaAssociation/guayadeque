@@ -12,6 +12,7 @@ Url:		https://www.guayadeque.org
 #Source0:	http://github.com/anonbeat/guayadeque/release/%{name}-%{version}.tar.gz
 Source0:	https://github.com/thothix/guayadeque/archive/v%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires:  make
 BuildRequires:	cmake
 BuildRequires:	gettext
 BuildRequires:	desktop-file-utils
