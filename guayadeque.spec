@@ -5,7 +5,7 @@
 Summary:	Music Player with the aims to be intuitive, easy to use and fast
 Name:		guayadeque
 Version:	0.7.5
-Release:	3
+Release:	4
 Group:		Sound
 License:	GPLv2+
 Url:		https://www.guayadeque.org
