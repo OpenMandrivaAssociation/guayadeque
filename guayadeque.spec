@@ -69,6 +69,7 @@ rm -f ./build*
 
 %files -f %{name}.lang
 %doc README LICENSE
+%doc %{_datadir}/doc/guayadeque/
 %{_bindir}/%{name}
 %{_datadir}/applications/org.guayadeque.Guayadeque.desktop
 %{_datadir}/metainfo/org.guayadeque.Guayadeque.metainfo.xml
