@@ -4,13 +4,12 @@
 
 Summary:	Music Player with the aims to be intuitive, easy to use and fast
 Name:		guayadeque
-Version:	0.7.5
-Release:	4
+Version:	1.1.0
+Release:	1
 Group:		Sound
 License:	GPLv2+
 Url:		https://www.guayadeque.org
-#Source0:	http://github.com/anonbeat/guayadeque/release/%{name}-%{version}.tar.gz
-Source0:	https://github.com/thothix/guayadeque/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:	https://codeberg.org/thothix/guayadeque/archive/v%{version}/%{name}-v%{version}.tar.gz
 
 BuildRequires:  make
 BuildRequires:	cmake
@@ -53,7 +52,7 @@ Some of Guayadeque Features
 - Play and Record shoutcast radios
 
 %prep
-%autosetup -p1
+%autosetup -n %{name} -p1
 
 # Remove due conflicting with system build.
 rm -f ./build*
@@ -64,13 +63,6 @@ rm -f ./build*
 
 %install
 %make_install -C build
-
-#desktop-file-install \
-#	--vendor="" \
-#	--remove-category="Application" \
-#	--remove-key="Encoding" \
-#	--dir %{buildroot}%{_datadir}/applications \
-#	%{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %find_lang %{name}
 
